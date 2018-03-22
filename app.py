@@ -1,3 +1,4 @@
+import os
 from bottle import run, route, template, request, response, redirect
 
 adminuser = 'admin'
@@ -36,4 +37,4 @@ def signout():
     response.set_cookie('account', "", expires=0)
     return "You have been signed out. <br> <a href='/login'>Log in</a>"
 
-run()
+run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
